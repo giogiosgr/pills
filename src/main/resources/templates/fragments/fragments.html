@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- FRAGMENT DELL'HEAD -->
+
+<head th:fragment="head(title)">
+	<title th:text="${title}"></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- embed Font Roboto da Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.5.2/css/all.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+	<!-- FRAGMENT DELLA NAVBAR -->
+	<nav th:fragment="navbar(page)" class="navbar bg-body-tertiary">
+		<form class="container-fluid ms-3 justify-content-between">
+			<div class="d-flex align-items-center">
+				<a th:unless="${page} == 'home'" th:href="@{/}" class="navbar-brand">HOMEPAGE</a>
+				<a th:href="@{/tickets}"><button class="btn btn-outline-success" type="button">DASHBOARD
+						TICKETS</button></a>
+			</div>
+			<div class="d-flex align-items-center">
+				<p class="mb-0 me-4">Benvenuto, sei loggato come: <span class="fw-bold"
+						th:text="${#authentication.principal.username}"></span></p>
+				<a th:unless="${page} == 'userpage'" class="btn btn-info me-3"
+					th:href="@{/users/show}" role="button">Area Personale</a>
+				<a class="btn btn-danger me-5" th:href="@{/logout}" role="button">Logout</a>
+			</div>
+		</form>
+	</nav>
+
+	<!-- FRAGMENT DEGLI SCRIPTS(FOOTER) -->
+	<th:block th:fragment="scripts">
+		<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/webjars/font-awesome/6.5.2/js/all.min.js}"></script>
+	</th:block>
+
+	<!-- FRAGMENT DEL SUCCESS MESSAGE -->
+	<div th:fragment="successAlert(message)" class="alert alert-success alert-dismissible fade show my-3" role="alert">
+		<h4 th:text="${message}" class="p-0 m-0"></h4>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+
+	<!-- FRAGMENT DEL NOT SUCCESS MESSAGE -->
+	<div th:fragment="notSuccessAlert(message)" class="alert alert-danger alert-dismissible fade show my-3"
+		role="alert">
+		<h4 th:text="${message}" class="p-0 m-0"></h4>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+
+</body>
+
+</html>
