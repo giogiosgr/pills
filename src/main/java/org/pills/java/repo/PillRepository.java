@@ -1,5 +1,10 @@
 package org.pills.java.repo;
 
-public interface PillRepository {
+import org.pills.java.model.Pill;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PillRepository extends JpaRepository<Pill, Integer>{
 
 }
