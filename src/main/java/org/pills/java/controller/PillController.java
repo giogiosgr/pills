@@ -27,7 +27,7 @@ public class PillController {
 
 		model.addAttribute("pills", pillService.getAll());
 
-		return "tickets/index";
+		return "pills/index";
 	}
 
 }
