@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @SuppressWarnings("unused")
 
 @Controller
-@RequestMapping("/tickets")
+@RequestMapping("/pills")
 public class PillController {
 	
 	@Autowired
