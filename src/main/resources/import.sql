@@ -1,0 +1,1 @@
+INSERT INTO `pills` (`name`, `content`, `created_at`, `updated_at`) VALUES ('a pill', 'this is a sample pill', '2024-10-27 20:00:00','2024-10-28 20:00:00');

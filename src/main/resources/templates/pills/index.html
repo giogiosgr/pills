@@ -9,14 +9,14 @@
 
 	<main class="container">
 		<div class="row">
-			
-			<!-- Pill body -->		
-			<div class="card text-bg-primary p-1 m-3 rounded-5" style="width: fit-content;">
-				<div class="card-body p-2">
-					<h4 class="card-title my-0 mx-3">Hi I'm a Pill</h4>
+			<!-- Pill list -->
+			<th:block th:each="pill : ${pills}">
+				<div class="card text-bg-primary p-1 m-3 rounded-5" style="width: fit-content;">
+					<div class="card-body p-2">
+						<h4 class="card-title my-0 mx-3" th:text="${pill.name}"></h4>
+					</div>
 				</div>
-			</div>
-			
+			</th:block>
 		</div>
 	</main>
 
