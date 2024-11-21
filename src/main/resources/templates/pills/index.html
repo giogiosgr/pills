@@ -8,7 +8,7 @@
 	<header th:insert="~{fragments/fragments :: navbar('index')}"></header>
 
 	<main class="container">
-		<div class="row">
+		<div class="row flex-column pt-3">
 			<!-- Pill list -->
 			<th:block th:each="pill : ${pills}">
 				<div class="card text-bg-primary p-1 m-3 rounded-5" style="width: fit-content;">
