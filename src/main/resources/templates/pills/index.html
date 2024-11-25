@@ -12,13 +12,13 @@
 			<!-- Pill list -->
 			<th:block th:each="pill : ${pills}">
 				<!-- Pill title -->
-				<div th:id="${pill.id}" class="card text-bg-primary p-1 mt-4 rounded-5" style="width: fit-content;">
+				<div th:id="${pill.id}" title="pill" class="card text-bg-primary p-1 mt-4 rounded-5" style="width: fit-content;">
 					<div class="card-body p-2">
 						<h4 class="card-title my-0 mx-3" th:text="${pill.name}"></h4>
 					</div>
 				</div>
 				<!-- Pill content -->
-				<div class="card text-bg-success p-1 mt-2" style="width: fit-content;">
+				<div th:id="${pill.id} + 'c'" class="card text-bg-success p-1 mt-2 d-none text-break" style="width: fit-content;">
 					<div class="card-body p-2">
 						<h5 class="card-title my-0 mx-3" th:text="${pill.content}"></h5>
 					</div>
@@ -29,6 +29,7 @@
 
 	<footer>
 		<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+		<script th:src="@{/JS/script.js}"></script>
 	</footer>
 
 </body>
