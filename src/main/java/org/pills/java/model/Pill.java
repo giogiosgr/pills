@@ -27,7 +27,7 @@ public class Pill {
 	
 	@NotNull
 	@NotEmpty
-	@Size(min = 2, max = 255)
+	@Size(min = 2, max = 50)
 	@Column(name = "name", nullable = false)
 	private String name;
 	
