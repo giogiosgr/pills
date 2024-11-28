@@ -9,18 +9,60 @@
 
 	<main class="container">
 		<div class="row flex-column pt-2">
+			<!-- Add button -->
+			<form th:action="@{'/pills/create'}" method="get">
+				<button type="submit" class="btn btn-sm btn-success my-2 px-3 fs-2 fw-bold" title="Add pill">+</button>
+			</form>
 			<!-- Pill list -->
 			<th:block th:each="pill : ${pills}">
 				<!-- Pill name -->
-				<div th:id="${pill.id}" title="pill" class="card text-bg-primary p-1 mt-4 rounded-5" style="width: fit-content;">
+				<div th:id="${pill.id}" title="pill" class="card text-bg-primary p-1 mt-4 rounded-5"
+					style="width: fit-content;">
 					<div class="card-body p-2">
 						<h4 class="card-title my-0 mx-3" th:text="${pill.name}"></h4>
 					</div>
 				</div>
 				<!-- Pill content -->
-				<div th:id="${pill.id} + 'c'" class="card text-bg-success p-1 mt-2 d-none text-break" style="width: 20em;">
+				<div th:id="${pill.id} + 'c'" class="card text-bg-success p-1 mt-2 d-none text-break"
+					style="width: 20em;">
 					<div class="card-body p-2">
 						<h5 class="card-title my-0 mx-1" th:text="${pill.content}"></h5>
+						<div class="d-flex justify-content-end mt-3">
+							<form th:action="@{'/pills/edit/{id}'(id=${pill.id})}" method="get">
+								<button type="submit" class="btn btn-sm btn-warning m-1" title="Edit"><i
+										class="fas fa-edit"></i></button>
+							</form>
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-sm btn-danger m-1" title="Delete"
+								data-bs-toggle="modal" th:data-bs-target="'#delete-' + ${pill.id}">
+								<i class="fa-solid fa-trash"></i>
+							</button>
+						</div>
+						<!-- Modal -->
+						<div class="modal fade" th:id="'delete-' + ${pill.id}" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content text-dark">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="exampleModalLabel">Confirm deletion</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body text-center">
+										Are you sure you want to delete this pill?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Cancel</button>
+										<form class="d-inline-block" th:action="@{/pills/delete/{id}(id=${pill.id})}"
+											method="post">
+											<button class="btn btn-danger m-1" type="submit"
+												id="submitButton">Confirm</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</th:block>
