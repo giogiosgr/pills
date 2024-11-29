@@ -7,6 +7,8 @@ import org.pills.java.repo.PillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.validation.Valid;
+
 @Service
 public class PillService {
 
@@ -16,7 +18,21 @@ public class PillService {
 	public List<Pill> getAll() {
 
 		return repo.findAll();
+	}
+	
+	public Pill getById(Integer id) {
 
+		return repo.findById(id).get();
+	}
+	
+	public void save(@Valid Pill pill) {
+
+		repo.save(pill);
+	}
+	
+	public void deleteById(int id) {
+
+		repo.deleteById(id);
 	}
 
 }
