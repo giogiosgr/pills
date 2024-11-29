@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/fragments :: head('add')}"></head>
+
+<body>
+
+	<header th:insert="~{fragments/fragments :: navbar('create')}"></header>
+
+	<main class="container">
+
+		<div class="col-4 text-center text-bg-primary my-3 rounded">
+			<h3 class="my-1">ADD PILL</h3>
+		</div>
+
+		<div class="row">
+			<div class="col-4">
+				<form id="pill-form" th:object="${pill}" th:action="@{/pills/create}" method="POST">
+					<div class="mb-3">
+						<label for="name" class="form-label">Pill Name</label>
+						<input name="name" type="text" class="form-control" id="title" required minlength="2"
+							maxlength="50" th:field="*{name}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+							<ul>
+								<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="mb-3">
+						<label for="text" class="form-label">Pill Text</label>
+						<textarea name="text" class="form-control" id="text" rows="4" required minlength="2"
+							maxlength="5000" th:field="*{text}" th:errorClass="is-invalid">
+						</textarea>
+						<div th:if="${#fields.hasErrors('text')}" class="invalid-feedback">
+							<ul>
+								<li th:each="err : ${#fields.errors('text')}" th:text="${err}"></li>
+							</ul>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary m-2">Confirm</button>
+					<button type="reset" class="btn btn-primary m-2">Reset</button>
+					<a class="btn btn-primary m-2" th:href="@{/pills}" role="button">Cancel</a>
+				</form>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+	</footer>
+
+</body>
+
+</html>
