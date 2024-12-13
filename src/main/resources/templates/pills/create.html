@@ -38,7 +38,8 @@
 					</div>
 					<div class="mb-3">
 						<label for="expiration" class="pb-2" ; style="display: block">Expiration Date</label>
-						<input type="datetime-local" id="expiration" name="expiration" th:field="*{expDate}"  th:errorClass="is-invalid">
+						<input type="datetime-local" id="expiration" name="expiration" th:field="*{expDate}"
+							th:errorClass="is-invalid">
 						<div th:if="${#fields.hasErrors('expDate')}" class="invalid-feedback">
 							<ul>
 								<li th:each="err : ${#fields.errors('expDate')}" th:text="${err}"></li>

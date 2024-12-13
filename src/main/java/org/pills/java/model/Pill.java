@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -45,6 +46,8 @@ public class Pill {
 	@Column(columnDefinition = "TIMESTAMP(0)") // Precision to the second
 	private LocalDateTime updatedAt;
 	
+	@NotNull
+	@Future
 	private LocalDateTime expDate;
 	
 	// getters and setters
