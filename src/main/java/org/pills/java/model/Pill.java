@@ -38,10 +38,14 @@ public class Pill {
 	private String content;
 	
 	@CreationTimestamp
+	@Column(columnDefinition = "TIMESTAMP(0)") // Precision to the second
 	private LocalDateTime createdAt;
 
 	@UpdateTimestamp
+	@Column(columnDefinition = "TIMESTAMP(0)") // Precision to the second
 	private LocalDateTime updatedAt;
+	
+	private LocalDateTime expDate;
 	
 	// getters and setters
 
@@ -83,6 +87,14 @@ public class Pill {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public LocalDateTime getExpDate() {
+		return expDate;
+	}
+
+	public void setExpDate(LocalDateTime expDate) {
+		this.expDate = expDate;
 	}
 	
 }
