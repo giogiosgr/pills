@@ -33,7 +33,7 @@ public class PillController {
 	@GetMapping()
 	public String index(Model model) {
 
-		model.addAttribute("pills", pillService.getAll());
+		model.addAttribute("pills", pillService.getAllNotExpired());
 
 		return "pills/index";
 	}

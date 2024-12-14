@@ -1,5 +1,7 @@
 package org.pills.java.service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.pills.java.model.Pill;
@@ -19,17 +21,35 @@ public class PillService {
 
 		return repo.findAll();
 	}
-	
+
+	/**
+	 * Method to retrieve only the not expired pills (ExpDate is after the actual date)
+	 * 
+	 * @return List<Pill>
+	 */
+	public List<Pill> getAllNotExpired() {
+
+		List<Pill> list = new ArrayList<>();
+
+		for (Pill pill : repo.findAll()) {
+			if (pill.getExpDate().isAfter(LocalDateTime.now())) {
+				list.add(pill);
+			}
+		}
+
+		return list;
+	}
+
 	public Pill getById(Integer id) {
 
 		return repo.findById(id).get();
 	}
-	
+
 	public void save(@Valid Pill pill) {
 
 		repo.save(pill);
 	}
-	
+
 	public void deleteById(int id) {
 
 		repo.deleteById(id);
