@@ -1,6 +1,7 @@
 package org.pills.java.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -50,6 +52,9 @@ public class Pill {
 	@Future
 	private LocalDateTime expDate;
 	
+	@Transient
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd' 'HH:mm");
+	
 	// getters and setters
 
 	public Integer getId() {
@@ -83,6 +88,10 @@ public class Pill {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	public String getFormattedCreatedAt() {
+		return createdAt.format(formatter);
+	}
 
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
@@ -91,6 +100,10 @@ public class Pill {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	public String getFormattedUpdatedAt() {
+		return updatedAt.format(formatter);
+	}
 
 	public LocalDateTime getExpDate() {
 		return expDate;
@@ -98,6 +111,10 @@ public class Pill {
 
 	public void setExpDate(LocalDateTime expDate) {
 		this.expDate = expDate;
+	}
+	
+	public String getFormattedExpDate() {
+		return expDate.format(formatter);
 	}
 	
 }
