@@ -23,14 +23,14 @@
 				<div th:id="${pill.id}" title="pill" class="card text-bg-primary p-1 mt-4 rounded-5"
 					style="width: fit-content;">
 					<div class="card-body p-2">
-						<h4 class="card-title my-0 mx-3" th:text="${pill.name}"></h4>
+						<h3 class="card-title my-0 mx-3" th:text="${pill.name}"></h3>
 					</div>
 				</div>
 				<!-- Pill content -->
 				<div th:id="${pill.id} + 'c'" class="card text-bg-success p-1 mt-2 d-none text-break"
 					style="width: 20em;">
 					<div class="card-body p-2">
-						<p class="card-title my-0 mx-1 fs-5" th:text="${pill.content}" style="white-space: pre-wrap;"></p>
+						<p class="card-title my-0 mx-1 fs-4" th:text="${pill.content}" style="white-space: pre-wrap;"></p>
 						<p class="card-title mx-1 my-2 fs-6" style="white-space: pre-wrap;">Expiration: <br />[[ ${pill.formattedExpDate} ]]</p>
 						<div class="d-flex justify-content-end mt-3">
 							<form th:action="@{'/pills/edit/{id}'(id=${pill.id})}" method="get">
