@@ -1,2 +1,2 @@
 # pills
- Pills App
+ Timed tasks rapresented as pills
