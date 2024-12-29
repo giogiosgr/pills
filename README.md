@@ -1,2 +1,2 @@
 # pills
- Timed tasks rapresented as pills
+ Timed tasks represented as pills
