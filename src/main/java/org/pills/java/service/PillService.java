@@ -31,9 +31,13 @@ public class PillService {
 
 		List<Pill> list = new ArrayList<>();
 
+		// in the loop, we also assign the value for the pill color attribute
+		int count = 0;
 		for (Pill pill : repo.findAll()) {
 			if (pill.getExpDate().isAfter(LocalDateTime.now())) {
+				pill.setColorNumber(count % 2);
 				list.add(pill);
+				count++;
 			}
 		}
 

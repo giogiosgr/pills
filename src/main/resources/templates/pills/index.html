@@ -21,7 +21,7 @@
 			<th:block th:each="pill : ${pills}">
 				<!-- Pill name -->
 				<div th:id="${pill.id}" title="pill" class="card p-1 mt-4 rounded-5"
-					th:classappend="${pill.id % 2 == 1} ? 'text-bg-primary' : 'text-bg-danger'"
+					th:classappend="${pill.colorNumber == 0} ? 'text-bg-primary' : 'text-bg-danger'"
 					style="width: fit-content;">
 					<div class="card-body p-2">
 						<h3 class="card-title my-0 mx-3" th:text="${pill.name}"></h3>

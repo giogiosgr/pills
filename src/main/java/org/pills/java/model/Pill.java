@@ -53,6 +53,9 @@ public class Pill {
 	private LocalDateTime expDate;
 	
 	@Transient
+	private int colorNumber;
+	
+	@Transient
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd' 'HH:mm");
 	
 	// getters and setters
@@ -115,6 +118,14 @@ public class Pill {
 	
 	public String getFormattedExpDate() {
 		return expDate.format(formatter);
+	}
+
+	public int getColorNumber() {
+		return colorNumber;
+	}
+
+	public void setColorNumber(int colorNumber) {
+		this.colorNumber = colorNumber;
 	}
 	
 }
