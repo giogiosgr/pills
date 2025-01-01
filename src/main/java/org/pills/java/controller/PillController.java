@@ -1,5 +1,6 @@
 package org.pills.java.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,11 @@ public class PillController {
 	@GetMapping("/create")
 	public String create(Model model) {
 		
-		model.addAttribute(new Pill());
+		Pill newPill = new Pill();
+		
+		newPill.setExpDate(LocalDateTime.now().plusDays(1));
+		
+		model.addAttribute(newPill);
 		
 		return "pills/create";	
 	}
