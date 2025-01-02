@@ -10,14 +10,14 @@
 	<main class="container">
 		<div class="row flex-column pt-2">
 			<!-- Search Input -->
-			<div class="col-sm-6 col-7 my-4">
+			<div class="my-3">
 				<form th:action="@{/pills/search}" method="GET" class="col-8">
 					<div class="d-flex">
-						<div class="me-4" style="width: 25rem">
-							<input name="name" type="text" class="form-control" id="name-input"
+						<div class="me-4">
+							<input name="name" type="text" class="form-control" id="name-input" style="width: 15rem;"
 								placeholder="Search by name">
 						</div>
-						<div class="me-5 pt-2" style="width: 20rem;">
+						<div class="me-5 pt-2">
 							<input type="checkbox" name="checkExpired" value="checkExpired" id="check-input">
 							<label for="check-input">Show Expired</label><br>
 						</div>
@@ -28,9 +28,11 @@
 				</form>
 			</div>
 			<!-- Add button -->
-			<form th:action="@{'/pills/create'}" method="get">
-				<button type="submit" class="btn btn-sm btn-success my-2 px-3 fs-2 fw-bold" title="Add pill">+</button>
-			</form>
+			<div class="my-2">
+				<form th:action="@{'/pills/create'}" method="get">
+					<button type="submit" class="btn btn-sm btn-success px-3 fs-2 fw-bold" title="Add pill">+</button>
+				</form>
+			</div>
 			<!-- Success Message -->
 			<th:block th:if="${successMessage != null}">
 				<div th:replace="~{fragments/fragments :: successAlert(${successMessage})}"></div>
