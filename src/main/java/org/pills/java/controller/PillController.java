@@ -41,9 +41,9 @@ public class PillController {
 
 	// SEARCH
 	@GetMapping("/search")
-	public String search(@RequestParam String name, Model model) {
+	public String search(@RequestParam String name, @RequestParam(required = false) String checkExpired, Model model) {
 
-		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name));
+		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name, checkExpired));
 
 		return "pills/index";
 	}
