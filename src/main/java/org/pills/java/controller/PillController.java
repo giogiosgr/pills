@@ -26,10 +26,10 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/pills")
 public class PillController {
-	
+
 	@Autowired
 	PillService pillService;
-	
+
 	// INDEX
 	@GetMapping()
 	public String index(Model model) {
@@ -38,69 +38,80 @@ public class PillController {
 
 		return "pills/index";
 	}
-	
+
+	// SEARCH
+	@GetMapping("/search")
+	public String search(@RequestParam String name, Model model) {
+
+		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name));
+
+		return "pills/index";
+	}
+
 	// CREATE
 	@GetMapping("/create")
 	public String create(Model model) {
-		
+
 		Pill newPill = new Pill();
-		
+
 		newPill.setExpDate(LocalDateTime.now().plusDays(1));
-		
+
 		model.addAttribute(newPill);
-		
-		return "pills/create";	
+
+		return "pills/create";
 	}
-	
+
 	// STORE
-	@PostMapping("/create") 
-	public String store(@Valid @ModelAttribute("pill") Pill pillForm, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
-		
+	@PostMapping("/create")
+	public String store(@Valid @ModelAttribute("pill") Pill pillForm, BindingResult bindingResult, Model model,
+			RedirectAttributes attributes) {
+
 		if (bindingResult.hasErrors()) {
 			return "pills/create";
 		}
-		
+
 		pillService.save(pillForm);
-		
+
 		attributes.addFlashAttribute("successMessage", "pill successfully created");
-		
-		return ("redirect:/pills");	
+
+		return ("redirect:/pills");
 	}
-	
+
 	// EDIT
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable int id, Model model) {
-	
-	    Pill pillToEdit = pillService.getById(id);
-	    
-	    model.addAttribute(pillToEdit);
-	
-	    return "pills/edit";
+
+		Pill pillToEdit = pillService.getById(id);
+
+		model.addAttribute(pillToEdit);
+
+		return "pills/edit";
 	}
-	
+
 	// UPDATE
 	@PostMapping("/edit/{id}")
-	public String update(@Valid @ModelAttribute("pill") Pill pillForm, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
-		
+	public String update(@Valid @ModelAttribute("pill") Pill pillForm, BindingResult bindingResult, Model model,
+			RedirectAttributes attributes) {
+
 		if (bindingResult.hasErrors()) {
 			return "pills/edit";
 		}
-		
-        pillService.save(pillForm);
-		
+
+		pillService.save(pillForm);
+
 		attributes.addFlashAttribute("successMessage", "pill successfully edited");
-		
+
 		return ("redirect:/pills");
 	}
 
 	// DELETE
 	@PostMapping("/delete/{id}")
 	public String delete(@PathVariable int id, Model model, RedirectAttributes attributes) {
-		
-        pillService.deleteById(id);
-		
+
+		pillService.deleteById(id);
+
 		attributes.addFlashAttribute("successMessage", "pill successfully deleted");
-		
+
 		return ("redirect:/pills");
 	}
 }

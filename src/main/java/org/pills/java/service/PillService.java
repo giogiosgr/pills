@@ -43,6 +43,29 @@ public class PillService {
 
 		return list;
 	}
+	
+	/**
+	 * Method to retrieve only the not expired pills (ExpDate is after the actual date)
+	 * Search by word, order by creation date
+	 * 
+	 * @return List<Pill>
+	 */
+    public List<Pill> getByNameContainingOrderByCreatedAt(String name) {
+		
+		List<Pill> list = new ArrayList<>();
+
+		// in the loop, we also assign the value for the pill color attribute
+		int count = 0;
+		for (Pill pill : repo.findByNameContainingOrderByCreatedAt(name)) {
+			if (pill.getExpDate().isAfter(LocalDateTime.now())) {
+				pill.setColorNumber(count % 2);
+				list.add(pill);
+				count++;
+			}
+		}
+
+		return list;
+	}
 
 	public Pill getById(Integer id) {
 
