@@ -1,6 +1,7 @@
 package org.pills.java.controller;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +42,15 @@ public class PillController {
 
 	// SEARCH
 	@GetMapping("/search")
-	public String search(@RequestParam String name, @RequestParam(required = false) String checkExpired, Model model) {
+	public String search(@RequestParam String name, @RequestParam(required = false) String checkExpired, 
+			@RequestParam String startDate, @RequestParam String endDate, Model model) {
+		
+		// parsing the dates from String to LocalDateTimes
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+		LocalDateTime localStartDate = LocalDateTime.parse(startDate, formatter);
+		LocalDateTime localEndDate = LocalDateTime.parse(endDate, formatter);
 
-		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name, checkExpired));
+		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name, checkExpired, localStartDate, localEndDate));
 
 		return "pills/index";
 	}
@@ -54,6 +61,7 @@ public class PillController {
 
 		Pill newPill = new Pill();
 
+		// set the starting date for the form, as actual date plus one day
 		newPill.setExpDate(LocalDateTime.now().plusDays(1));
 
 		model.addAttribute(newPill);

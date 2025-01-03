@@ -12,16 +12,24 @@
 			<!-- Search Input -->
 			<div class="my-3">
 				<form th:action="@{/pills/search}" method="GET" class="col-8">
-					<div class="d-flex">
-						<div class="me-4">
-							<input name="name" type="text" class="form-control" id="name-input" style="width: 15rem;"
+					<div class="row">
+						<div class="col-6 me-4 mb-3">
+							<input name="name" type="text" class="form-control" id="name-input"
 								placeholder="Search by name">
 						</div>
-						<div class="me-5 pt-2">
+						<div class="col-4 pt-2">
 							<input type="checkbox" name="checkExpired" value="checkExpired" id="check-input">
-							<label for="check-input">Show Expired</label><br>
+							<label for="check-input">Show Expired</label>
 						</div>
-						<div class="ms-2">
+						<div class="col-8 mb-2">
+							<label for="start-date" class="d-inline">Select starting date: &nbsp</label>
+							<input type="datetime-local" id="start-date" name="startDate" value="2024-01-01T00:00">
+						</div>
+						<div class="col-8 mb-3">
+							<label for="end-date" class="d-inline">Select ending date: &nbsp &nbsp</label>
+							<input type="datetime-local" id="end-date" name="endDate" value="2030-01-01T00:00">
+						</div>
+						<div class="col-6 mb-3">
 							<button type="submit" class="btn btn-success">Search</button>
 						</div>
 					</div>
