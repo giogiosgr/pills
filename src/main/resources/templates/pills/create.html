@@ -17,7 +17,7 @@
 				<form id="pill-form" th:object="${pill}" th:action="@{/pills/create}" method="POST">
 					<div class="mb-3">
 						<label for="name" class="form-label">Pill Name</label>
-						<input name="name" type="text" class="form-control" id="title" required minlength="2"
+						<input name="name" type="text" class="form-control" id="name" required minlength="2"
 							maxlength="50" th:field="*{name}" th:errorClass="is-invalid">
 						<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
 							<ul>
