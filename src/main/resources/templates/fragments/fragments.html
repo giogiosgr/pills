@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<!-- FRAGMENT DELL'HEAD -->
+<!-- HEAD FRAGMENT -->
 
 <head th:fragment="head(title)">
 	<title th:text="${title}"></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- embed Font Roboto da Google Fonts -->
+	<!-- embed Font Roboto from Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -20,7 +20,7 @@
 
 <body>
 
-	<!-- FRAGMENT DELLA NAVBAR -->
+	<!-- NAVBAR FRAGMENT -->
 	<nav th:fragment="navbar(page)" class="navbar bg-body-tertiary">
 		<form class="container-fluid ms-3 justify-content-between">
 			<div class="d-flex align-items-center">
@@ -30,19 +30,19 @@
 		</form>
 	</nav>
 
-	<!-- FRAGMENT DEGLI SCRIPTS(FOOTER) -->
+	<!-- SCRIPTS(FOOTER) FRAGMENT -->
 	<th:block th:fragment="scripts">
 		<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 		<script th:src="@{/webjars/font-awesome/6.5.2/js/all.min.js}"></script>
 	</th:block>
 
-	<!-- FRAGMENT DEL SUCCESS MESSAGE -->
+	<!-- SUCCESS MESSAGE FRAGMENT -->
 	<div th:fragment="successAlert(message)" class="alert alert-success alert-dismissible fade show my-2" role="alert">
 		<h4 th:text="${message}" class="p-0 m-0"></h4>
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 	</div>
 
-	<!-- FRAGMENT DEL NOT SUCCESS MESSAGE -->
+	<!-- NOT SUCCESS MESSAGE FRAGMENT -->
 	<div th:fragment="notSuccessAlert(message)" class="alert alert-danger alert-dismissible fade show my-2"
 		role="alert">
 		<h4 th:text="${message}" class="p-0 m-0"></h4>
