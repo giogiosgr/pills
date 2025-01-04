@@ -11,23 +11,23 @@
 		<div class="row flex-column pt-2">
 			<!-- Search Input -->
 			<div class="my-3">
-				<form th:action="@{/pills/search}" method="GET" class="col-8">
+				<form th:action="@{/pills/search}" method="GET" class="col-8" id="searchForm">
 					<div class="row">
 						<div class="col-6 me-4 mb-3">
 							<input name="name" type="text" class="form-control" id="name-input"
 								placeholder="Search by name">
 						</div>
 						<div class="col-4 pt-2">
-							<input type="checkbox" name="checkExpired" value="checkExpired" id="check-input">
-							<label for="check-input">Show Expired</label>
+							<input type="checkbox" name="checkExpired" value="checkExpired" id="checkInput">
+							<label for="checkInput">Show Expired</label>
 						</div>
 						<div class="col-8 mb-2">
-							<label for="start-date" class="d-inline">Select starting date: &nbsp</label>
-							<input type="datetime-local" id="start-date" name="startDate" value="2024-01-01T00:00">
+							<label for="startDate" class="d-inline">Select starting date: &nbsp</label>
+							<input type="datetime-local" id="startDate" name="startDate" value="2024-01-01T00:00">
 						</div>
 						<div class="col-8 mb-3">
-							<label for="end-date" class="d-inline">Select ending date: &nbsp &nbsp</label>
-							<input type="datetime-local" id="end-date" name="endDate" value="2030-01-01T00:00">
+							<label for="endDate" class="d-inline">Select ending date: &nbsp &nbsp</label>
+							<input type="datetime-local" id="endDate" name="endDate" value="2030-01-01T00:00">
 						</div>
 						<div class="col-6 mb-3">
 							<button type="submit" class="btn btn-success">Search</button>
