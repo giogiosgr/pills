@@ -51,6 +51,12 @@ public class PillController {
 		LocalDateTime localEndDate = LocalDateTime.parse(endDate, formatter);
 
 		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name, checkExpired, localStartDate, localEndDate));
+		
+		// return the parameters to the search inputs
+		model.addAttribute("inputName", name);
+		if (checkExpired != null) model.addAttribute("inputCheckExpired", checkExpired);
+		model.addAttribute("inputStartDate", startDate);
+		model.addAttribute("inputEndDate", endDate);
 
 		return "pills/index";
 	}
