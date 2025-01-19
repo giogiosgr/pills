@@ -1,11 +1,12 @@
 'use strict';
 
-
 document.querySelectorAll('div[title="pill"]').forEach((element) => element.addEventListener("click", toggleContentVisibility));
 
 const form = document.getElementById('searchForm');
 
 const nameInput = document.getElementById('nameInput');
+
+const checkInput = document.getElementById('checkInput');
 
 const startDate = document.getElementById('startDate');
 
@@ -19,7 +20,6 @@ function toggleContentVisibility() {
 	let pillContent = document.getElementById(this.id + "c");
 	
 	pillContent.classList.toggle("d-none");
-
 }
 
 // Check if end date > start date before submitting
@@ -33,10 +33,15 @@ form.addEventListener("submit", function (event) {
 
 
 // Reset input fields
-resetButton.addEventListener("submit", function (event) {
+resetButton.addEventListener("click", function (event) {
 	
 	event.preventDefault();
-    
-	nameInput.value() = null;
 	
+	nameInput.value = null;
+	
+	checkInput.checked = false;
+	
+	startDate.value = '2024-01-01T00:00';
+	
+	endDate.value = '2026-01-01T00:00';
 })
