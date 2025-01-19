@@ -1,0 +1,42 @@
+'use strict';
+
+
+document.querySelectorAll('div[title="pill"]').forEach((element) => element.addEventListener("click", toggleContentVisibility));
+
+const form = document.getElementById('searchForm');
+
+const nameInput = document.getElementById('nameInput');
+
+const startDate = document.getElementById('startDate');
+
+const endDate = document.getElementById('endDate');
+
+const resetButton = document.getElementById('resetButton');
+
+// Toggle pill content visibility
+function toggleContentVisibility() {
+	
+	let pillContent = document.getElementById(this.id + "c");
+	
+	pillContent.classList.toggle("d-none");
+
+}
+
+// Check if end date > start date before submitting
+form.addEventListener("submit", function (event) {
+    
+	if (endDate.value <= startDate.value) {
+		alert("Search Error: the Ending Date must be greater than the Starting Date");
+        event.preventDefault();	    
+	}
+})
+
+
+// Reset input fields
+resetButton.addEventListener("submit", function (event) {
+	
+	event.preventDefault();
+    
+	nameInput.value() = null;
+	
+})

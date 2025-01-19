@@ -18,7 +18,7 @@
 								<h4>SEARCH FILTERS</h4>
 							</div>
 							<div class="col-6 me-4 mb-3">
-								<input name="name" type="text" class="form-control" id="name-input"
+								<input name="name" type="text" class="form-control" id="nameInput"
 									placeholder="Search by name" th:value="${inputName}">
 							</div>
 							<div class="col-4">
@@ -38,7 +38,7 @@
 							</div>
 							<div class="col-10">
 								<button type="submit" class="btn btn-success me-5">Search</button>
-								<button class="btn btn-success ms-5">Reset Fields</button>
+								<button class="btn btn-success ms-5" id="resetButton">Reset Fields</button>
 							</div>
 						</div>
 					</form>
@@ -126,8 +126,7 @@
 
 	<footer>
 		<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
-		<script th:src="@{/JS/ToggleContentVisibility.js}"></script>
-		<script th:src="@{/JS/CheckSearchInput.js}"></script>
+		<script th:src="@{/JS/Script.js}"></script>
 	</footer>
 
 </body>
