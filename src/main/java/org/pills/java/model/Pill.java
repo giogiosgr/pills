@@ -56,7 +56,7 @@ public class Pill {
 	private int colorNumber;
 	
 	@Transient
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd' 'HH:mm");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy' 'HH:mm");
 	
 	// getters and setters
 
