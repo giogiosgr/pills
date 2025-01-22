@@ -17,7 +17,7 @@ const resetButton = document.getElementById('resetButton');
 // Toggle pill content visibility
 function toggleContentVisibility() {
 	
-	let pillContent = document.getElementById(this.id + "c");
+	const pillContent = document.getElementById(this.id + "c");
 	
 	pillContent.classList.toggle("d-none");
 }
