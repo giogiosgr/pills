@@ -14,11 +14,12 @@
 				<div class="card-body">
 					<form th:action="@{/pills/search}" method="GET" class="col-8" id="searchForm">
 						<div>
-							<div class="mb-3">
-								<h4 class="d-inline">SEARCH FILTERS</h4>
-								<button class="btn btn-success ms-4" id="showButton">Show</button>
+							<div class="d-flex align-items-center">
+								<div class="bg-danger-subtle text-danger-emphasis py-1 px-2 fs-3">SEARCH FILTERS
+								</div>
+								<button class="btn btn-success ms-4" id="showButton">Hide</button>
 							</div>
-							<div class="d-none row" id="searchFields">
+							<div class="row mt-3" id="searchFields">
 								<div class="col-6 me-4 mb-3">
 									<input name="name" type="text" class="form-control" id="nameInput"
 										placeholder="Search by name" th:value="${inputName}">

@@ -57,7 +57,7 @@ showButton.addEventListener("click", function (event) {
 
 	searchFields.classList.toggle("d-none");
 	
-	showButton.innerText == "Show" ? showButton.innerText = "Hide" : showButton.innerText = "Show"; 
+	showButton.innerText == "Hide" ? showButton.innerText = "Show" : showButton.innerText = "Hide"; 
 })
 
 
