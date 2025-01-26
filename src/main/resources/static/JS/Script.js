@@ -4,6 +4,10 @@ document.querySelectorAll('div[title="pill"]').forEach((element) => element.addE
 
 const form = document.getElementById('searchForm');
 
+const showButton = document.getElementById('showButton');
+
+const searchFields = document.getElementById('searchFields');
+
 const nameInput = document.getElementById('nameInput');
 
 const checkInput = document.getElementById('checkInput');
@@ -45,3 +49,20 @@ resetButton.addEventListener("click", function (event) {
 	
 	endDate.value = '2026-01-01T00:00';
 })
+
+// Hide/Show search fields
+showButton.addEventListener("click", function (event) {
+	
+	event.preventDefault();
+
+	searchFields.classList.toggle("d-none");
+	
+	showButton.innerText == "Show" ? showButton.innerText = "Hide" : showButton.innerText = "Show"; 
+})
+
+
+
+
+
+
+

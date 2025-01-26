@@ -13,33 +13,35 @@
 			<div class="card text-bg-info my-3">
 				<div class="card-body">
 					<form th:action="@{/pills/search}" method="GET" class="col-8" id="searchForm">
-						<div class="row">
-							<div class="col-10 me-4 mb-3" id="search1">
+						<div>
+							<div class="mb-3">
 								<h4 class="d-inline">SEARCH FILTERS</h4>
-								<button class="btn btn-success ms-4" id="showButton">Hide</button>
+								<button class="btn btn-success ms-4" id="showButton">Show</button>
 							</div>
-							<div class="col-6 me-4 mb-3" id="search2">
-								<input name="name" type="text" class="form-control" id="nameInput"
-									placeholder="Search by name" th:value="${inputName}">
-							</div>
-							<div class="col-4" id="search3">
-								<input type="checkbox" name="checkExpired" value="checkExpired" id="checkInput"
-									th:checked="${inputCheckExpired != null}">
-								<label for="checkInput" class="mt-2">Show Expired</label>
-							</div>
-							<div class="col-10 mb-2" id="search4">
-								<label for="startDate" class="d-inline">Starting creation date: &nbsp</label>
-								<input type="datetime-local" id="startDate" name="startDate"
-									th:value="${inputStartDate == null} ? '2024-01-01T00:00' : ${inputStartDate}">
-							</div>
-							<div class="col-10 mb-3" id="search5">
-								<label for="endDate" class="d-inline">Ending creation date: &nbsp &nbsp</label>
-								<input type="datetime-local" id="endDate" name="endDate"
-									th:value="${inputEndDate == null} ? '2026-01-01T00:00' : ${inputEndDate}">
-							</div>
-							<div class="col-10" id="search6">
-								<button type="submit" class="btn btn-success me-5">Search</button>
-								<button class="btn btn-success ms-5" id="resetButton">Reset Fields</button>
+							<div class="d-none row" id="searchFields">
+								<div class="col-6 me-4 mb-3">
+									<input name="name" type="text" class="form-control" id="nameInput"
+										placeholder="Search by name" th:value="${inputName}">
+								</div>
+								<div class="col-4">
+									<input type="checkbox" name="checkExpired" value="checkExpired" id="checkInput"
+										th:checked="${inputCheckExpired != null}">
+									<label for="checkInput" class="mt-2">Show Expired</label>
+								</div>
+								<div class="col-10 mb-2">
+									<label for="startDate" class="d-inline">Starting creation date: &nbsp</label>
+									<input type="datetime-local" id="startDate" name="startDate"
+										th:value="${inputStartDate == null} ? '2024-01-01T00:00' : ${inputStartDate}">
+								</div>
+								<div class="col-10 mb-3">
+									<label for="endDate" class="d-inline">Ending creation date: &nbsp &nbsp</label>
+									<input type="datetime-local" id="endDate" name="endDate"
+										th:value="${inputEndDate == null} ? '2026-01-01T00:00' : ${inputEndDate}">
+								</div>
+								<div class="col-10">
+									<button type="submit" class="btn btn-success me-5">Search</button>
+									<button class="btn btn-success ms-5" id="resetButton">Reset Fields</button>
+								</div>
 							</div>
 						</div>
 					</form>
