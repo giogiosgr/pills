@@ -30,12 +30,33 @@ public class PillController {
 
 	@Autowired
 	PillService pillService;
+	
+	// search fields default attributes
+	
+	private String searchName = "";
+	
+	private String searchCheckExpired = null;
+	
+	private String searchStartDate = "2024-01-01T00:00";
+	
+	private String searchEndDate = "2026-01-01T00:00";
 
 	// INDEX
 	@GetMapping()
 	public String index(Model model) {
 
-		model.addAttribute("pills", pillService.getAllNotExpired());
+		// parsing the dates from String to LocalDateTimes
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
+		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
+				
+		model.addAttribute("pills", pillService.getBySearchFilters(searchName, searchCheckExpired, localStartDate, localEndDate));
+				
+		// return the current parameters to the search inputs
+		model.addAttribute("inputName", searchName);
+		if (searchCheckExpired != null) model.addAttribute("inputCheckExpired", searchCheckExpired);
+		model.addAttribute("inputStartDate", searchStartDate);
+		model.addAttribute("inputEndDate", searchEndDate);
 
 		return "pills/index";
 	}
@@ -45,18 +66,24 @@ public class PillController {
 	public String search(@RequestParam String name, @RequestParam(required = false) String checkExpired, 
 			@RequestParam String startDate, @RequestParam String endDate, Model model) {
 		
+		// assign the current parameters values to the related search attribues	
+		searchName = name;
+		searchCheckExpired = checkExpired;
+		searchStartDate = startDate;
+		searchEndDate = endDate;
+		
 		// parsing the dates from String to LocalDateTimes
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-		LocalDateTime localStartDate = LocalDateTime.parse(startDate, formatter);
-		LocalDateTime localEndDate = LocalDateTime.parse(endDate, formatter);
-
-		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name, checkExpired, localStartDate, localEndDate));
+		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
+		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
+		
+		model.addAttribute("pills", pillService.getBySearchFilters(searchName, searchCheckExpired, localStartDate, localEndDate));
 		
 		// return the current parameters to the search inputs
-		model.addAttribute("inputName", name);
-		if (checkExpired != null) model.addAttribute("inputCheckExpired", checkExpired);
-		model.addAttribute("inputStartDate", startDate);
-		model.addAttribute("inputEndDate", endDate);
+		model.addAttribute("inputName", searchName);
+		if (searchCheckExpired != null) model.addAttribute("inputCheckExpired", searchCheckExpired);
+		model.addAttribute("inputStartDate", searchStartDate);
+		model.addAttribute("inputEndDate", searchEndDate);
 
 		return "pills/index";
 	}
@@ -128,4 +155,5 @@ public class PillController {
 
 		return ("redirect:/pills");
 	}
+	
 }

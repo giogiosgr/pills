@@ -51,7 +51,7 @@ public class PillService {
 	 * 
 	 * @return List<Pill>
 	 */
-    public List<Pill> getByNameContainingOrderByCreatedAt(String name, String checkExpired, LocalDateTime startDate, LocalDateTime endDate) {
+    public List<Pill> getBySearchFilters(String name, String checkExpired, LocalDateTime startDate, LocalDateTime endDate) {
 		
 		List<Pill> list = new ArrayList<>();
 

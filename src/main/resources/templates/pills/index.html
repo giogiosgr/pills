@@ -32,12 +32,12 @@
 								<div class="col-10 mb-2">
 									<label for="startDate" class="d-inline">Starting creation date: &nbsp</label>
 									<input type="datetime-local" id="startDate" name="startDate"
-										th:value="${inputStartDate == null} ? '2024-01-01T00:00' : ${inputStartDate}">
+										th:value="${inputStartDate}">
 								</div>
 								<div class="col-10 mb-3">
 									<label for="endDate" class="d-inline">Ending creation date: &nbsp &nbsp</label>
 									<input type="datetime-local" id="endDate" name="endDate"
-										th:value="${inputEndDate == null} ? '2026-01-01T00:00' : ${inputEndDate}">
+										th:value="${inputEndDate}">
 								</div>
 								<div class="col-10">
 									<button type="submit" class="btn btn-success me-5">Search</button>
