@@ -24,6 +24,8 @@ function toggleContentVisibility() {
 	const pillContent = document.getElementById(this.id + "c");
 	
 	pillContent.classList.toggle("d-none");
+	
+	document.getElementById(this.id + "c").scrollIntoView();
 }
 
 // Check if end date > start date before submitting
@@ -50,7 +52,7 @@ resetButton.addEventListener("click", function (event) {
 	endDate.value = '2026-01-01T00:00';
 })
 
-// Hide/Show search fields
+// Toggle search fields visibility
 showButton.addEventListener("click", function (event) {
 	
 	event.preventDefault();

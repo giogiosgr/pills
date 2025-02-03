@@ -52,7 +52,7 @@ public class PillController {
 
 		model.addAttribute("pills", pillService.getByNameContainingOrderByCreatedAt(name, checkExpired, localStartDate, localEndDate));
 		
-		// return the parameters to the search inputs
+		// return the current parameters to the search inputs
 		model.addAttribute("inputName", name);
 		if (checkExpired != null) model.addAttribute("inputCheckExpired", checkExpired);
 		model.addAttribute("inputStartDate", startDate);
