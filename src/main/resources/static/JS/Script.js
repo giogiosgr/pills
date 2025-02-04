@@ -61,10 +61,3 @@ showButton.addEventListener("click", function (event) {
 	
 	showButton.innerText == "Hide" ? showButton.innerText = "Show" : showButton.innerText = "Hide"; 
 })
-
-
-
-
-
-
-
