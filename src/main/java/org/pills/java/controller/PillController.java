@@ -40,13 +40,14 @@ public class PillController {
 	private String searchStartDate = "2024-01-01T00:00";
 	
 	private String searchEndDate = "2026-01-01T00:00";
+	
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
 	// INDEX
 	@GetMapping()
 	public String index(Model model) {
 
 		// parsing the dates from String to LocalDateTimes
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
 		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
 				
@@ -73,7 +74,6 @@ public class PillController {
 		searchEndDate = endDate;
 		
 		// parsing the dates from String to LocalDateTimes
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
 		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
 		
