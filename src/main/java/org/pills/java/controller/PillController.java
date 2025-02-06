@@ -40,24 +40,12 @@ public class PillController {
 	private String searchStartDate = "2024-01-01T00:00";
 	
 	private String searchEndDate = "2026-01-01T00:00";
-	
-	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
 	// INDEX
 	@GetMapping()
 	public String index(Model model) {
 
-		// parsing the dates from String to LocalDateTimes
-		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
-		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
-				
-		model.addAttribute("pills", pillService.getBySearchFilters(searchName, searchCheckExpired, localStartDate, localEndDate));
-				
-		// return the current parameters to the search inputs
-		model.addAttribute("inputName", searchName);
-		if (searchCheckExpired != null) model.addAttribute("inputCheckExpired", searchCheckExpired);
-		model.addAttribute("inputStartDate", searchStartDate);
-		model.addAttribute("inputEndDate", searchEndDate);
+		filterAndAdd(model);
 
 		return "pills/index";
 	}
@@ -73,17 +61,7 @@ public class PillController {
 		searchStartDate = startDate;
 		searchEndDate = endDate;
 		
-		// parsing the dates from String to LocalDateTimes
-		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
-		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
-		
-		model.addAttribute("pills", pillService.getBySearchFilters(searchName, searchCheckExpired, localStartDate, localEndDate));
-		
-		// return the current parameters to the search inputs
-		model.addAttribute("inputName", searchName);
-		if (searchCheckExpired != null) model.addAttribute("inputCheckExpired", searchCheckExpired);
-		model.addAttribute("inputStartDate", searchStartDate);
-		model.addAttribute("inputEndDate", searchEndDate);
+		filterAndAdd(model);
 
 		return "pills/index";
 	}
@@ -154,6 +132,27 @@ public class PillController {
 		attributes.addFlashAttribute("successMessage", "pill successfully deleted");
 
 		return ("redirect:/pills");
+	}
+	
+	/**
+	 * Method to filter and add the pills to the current model
+	 * This method usage is shared between index and search calls
+	 * 
+	 */
+	public void filterAndAdd (Model model) {
+		
+		// parsing the dates from String to LocalDateTimes
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+		LocalDateTime localStartDate = LocalDateTime.parse(searchStartDate, formatter);
+		LocalDateTime localEndDate = LocalDateTime.parse(searchEndDate, formatter);
+					
+		model.addAttribute("pills", pillService.getBySearchFilters(searchName, searchCheckExpired, localStartDate, localEndDate));
+				
+		// return the current parameters to the search inputs
+		model.addAttribute("inputName", searchName);
+		if (searchCheckExpired != null) model.addAttribute("inputCheckExpired", searchCheckExpired);
+		model.addAttribute("inputStartDate", searchStartDate);
+		model.addAttribute("inputEndDate", searchEndDate);
 	}
 	
 }
