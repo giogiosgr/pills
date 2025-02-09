@@ -31,7 +31,7 @@ public class PillController {
 	@Autowired
 	PillService pillService;
 	
-	// search fields default attributes
+	// search fields default attribute values
 	
 	private String searchName = "";
 	
