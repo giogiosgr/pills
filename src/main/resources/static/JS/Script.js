@@ -25,7 +25,7 @@ function toggleContentVisibility() {
 	
 	pillContent.classList.toggle("d-none");
 	
-	pillContent.scrollIntoView();
+	document.getElementById(this.id).scrollIntoView();
 }
 
 // Check if end date > start date before submitting
