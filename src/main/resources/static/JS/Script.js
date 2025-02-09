@@ -2,7 +2,7 @@
 
 document.querySelectorAll('div[title="pill"]').forEach((element) => element.addEventListener("click", toggleContentVisibility));
 
-const form = document.getElementById('searchForm');
+const searchForm = document.getElementById('searchForm');
 
 const showButton = document.getElementById('showButton');
 
@@ -29,7 +29,7 @@ function toggleContentVisibility() {
 }
 
 // Check if end date > start date before submitting
-form.addEventListener("submit", function (event) {
+searchForm.addEventListener("submit", function (event) {
     
 	if (endDate.value <= startDate.value) {
 		alert("Search Error: the Ending Date must be greater than the Starting Date");
@@ -50,6 +50,8 @@ resetButton.addEventListener("click", function (event) {
 	startDate.value = '2024-01-01T00:00';
 	
 	endDate.value = '2026-01-01T00:00';
+	
+	searchForm.submit();
 })
 
 // Toggle search fields visibility
