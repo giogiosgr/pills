@@ -51,7 +51,7 @@
 			<!-- Add button -->
 			<div>
 				<form th:action="@{'/pills/create'}" method="get">
-					<button type="submit" class="btn btn-sm btn-success px-3 fs-2 fw-bold" title="Add pill">Add Task</button>
+					<button type="submit" class="btn btn-sm bg-danger-subtle text-danger-emphasis px-3 fs-2 fw-bold" title="Add pill">Add Task</button>
 				</form>
 			</div>
 			<!-- Success Message -->
@@ -60,7 +60,7 @@
 			</th:block>
 			<!-- Pill list -->
 			<th:block th:if="${pills.size > 0}">
-				<div class="my-3 pb-3 ps-3 bg-danger-subtle">
+				<div class="my-3 pb-3 ps-3 bg-danger-subtle rounded-3">
 					<th:block th:each="pill : ${pills}">
 						<!-- Pill name -->
 						<div th:id="${pill.id}" title="pill" class="card p-1 mt-3 rounded-5"
@@ -71,7 +71,7 @@
 							</div>
 						</div>
 						<!-- Pill content -->
-						<div th:id="${pill.id} + 'c'" class="card text-bg-success p-1 mt-2 d-none text-break"
+						<div th:id="${pill.id} + 'c'" class="card text-bg-success bg-opacity-75 p-1 mt-2 d-none text-break"
 							style="width: 20em;">
 							<div class="card-body p-2">
 								<p class="card-title mb-3 mx-1 fs-4" th:text="${pill.content}"
