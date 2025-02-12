@@ -50,6 +50,7 @@ public class Pill {
 	
 	@NotNull
 	@Future
+	@Column(columnDefinition = "TIMESTAMP(0)")
 	private LocalDateTime expDate;
 	
 	@Transient
