@@ -39,7 +39,13 @@ public class PillController {
 	
 	private String searchStartDate = "2024-01-01T00:00";
 	
-	private String searchEndDate = "2026-01-01T00:00";
+	// The "ending creation date" search field is set equal to midnight of the current next day
+	
+	DateTimeFormatter endFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+	
+	LocalDateTime dayAfter = LocalDateTime.now().plusDays(1).withHour(0).withMinute(0).withSecond(0);
+	
+	private String searchEndDate = dayAfter.format(endFormatter);
 
 	// INDEX
 	@GetMapping()
