@@ -10,7 +10,7 @@
 	<main class="container">
 		<div class="row flex-column pt-2 mb-4">
 			<!-- Input Filters Form -->
-			<div class="card text-bg-info my-3">
+			<div class="card text-bg-info bg-opacity-50 my-3">
 				<div class="card-body">
 					<form th:action="@{/pills/search}" method="GET" class="col-8" id="searchForm">
 						<div>
@@ -51,7 +51,7 @@
 			<!-- Add button -->
 			<div>
 				<form th:action="@{'/pills/create'}" method="get">
-					<button type="submit" class="btn btn-sm bg-warning bg-opacity-50 px-3 fs-2 fw-bold" title="Add a new task">Add Pill</button>
+					<button type="submit" class="btn btn-sm bg-warning bg-opacity-50 mb-2 px-3 fs-2 fw-bold" title="Add a new task">Add Pill</button>
 				</form>
 			</div>
 			<!-- Success Message -->
@@ -60,7 +60,7 @@
 			</th:block>
 			<!-- Pill list -->
 			<th:block th:if="${pills.size > 0}">
-				<div class="my-3 pb-3 ps-3 bg-danger-subtle rounded-3">
+				<div class="mb-3 pb-3 ps-3 bg-info rounded-3">
 					<th:block th:each="pill : ${pills}">
 						<!-- Pill name -->
 						<div th:id="${pill.id}" title="pill" class="card p-1 mt-3 rounded-5"
