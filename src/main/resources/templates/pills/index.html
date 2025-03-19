@@ -30,13 +30,13 @@
 									<label for="checkInput" class="mt-2">Show Expired</label>
 								</div>
 								<div class="col-10 mb-2">
-									<label for="startDate" class="d-inline">Starting creation date: &nbsp</label>
+									<label for="startDate" class="d-inline">Creation date: From &nbsp</label>
 									<input type="datetime-local" id="startDate" name="startDate"
 										th:value="${inputStartDate}">
 								</div>
 								<div class="col-10 mb-3">
-									<label for="endDate" class="d-inline">Ending creation date: &nbsp &nbsp</label>
-									<input type="datetime-local" id="endDate" name="endDate"
+									<label for="endDate" class="d-inline">Creation date: &nbsp To &nbsp &nbsp</label>
+									<input type="datetime-local" id="endDate" class="ms-1" name="endDate"
 										th:value="${inputEndDate}">
 								</div>
 								<div class="col-10">
