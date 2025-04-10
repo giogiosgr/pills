@@ -37,20 +37,20 @@ public class Pill {
 	@NotNull
 	@NotEmpty
 	@Size(min = 2, max = 5000)
-	@Column(name = "content", columnDefinition = "text")
+	@Column(name = "content", columnDefinition = "NVARCHAR(MAX)")
 	private String content;
 	
 	@CreationTimestamp
-	@Column(columnDefinition = "TIMESTAMP(0)") // Precision to the second
+	 @Column(name = "created_at", columnDefinition = "DATETIME2(0)") // Precision to the second
 	private LocalDateTime createdAt;
 
 	@UpdateTimestamp
-	@Column(columnDefinition = "TIMESTAMP(0)") // Precision to the second
+	@Column(name = "updated_at", columnDefinition = "DATETIME2(0)")// Precision to the second
 	private LocalDateTime updatedAt;
 	
 	@NotNull
 	@Future
-	@Column(columnDefinition = "TIMESTAMP(0)")
+	@Column(name = "exp_date", columnDefinition = "DATETIME2(0)")
 	private LocalDateTime expDate;
 	
 	@Transient
